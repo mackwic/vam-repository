@@ -1,0 +1,36 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#">Home</a></li>
+    <li><a ng-href="#">About</a></li>
+    <li><a ng-href="#">Contact</a></li>
+  </ul>
+  <h3 class="text-muted">vim pi</h3>
+</div>
+
+<div class="row marketing">
+  <h4>List of the VAM plugins</h4>
+  <br/>
+
+  <div class="form col-sm-10">
+    <input
+      class="form-control"
+      type="text"
+      data-ng-model="filter"
+      placeholder="Type here to lookup an Addon...">
+  </div>
+
+  <div class="col-xs-12">&nbsp;</div>
+
+  <ul class="col-xs-12 col-xs-offset-1 row" data-ng-repeat="plugin in pluginCollection | filter:filter | limitTo:50">
+    <li class="col-xs-12">
+      <span class="label label-info">{{plugin.type}}</span>
+      <span data-ng-if="plugin.host" class="label label-success">{{plugin.host}}</span>
+      {{plugin.name}}
+    </li>
+  </ul>
+</div>
+
+<div class="footer">
+  <p>♥ to the Vim-community</p>
+  <p>♥ from @mackwic</p>
+</div>
