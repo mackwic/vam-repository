@@ -33,6 +33,8 @@
     "node": ">=0.8.0"
   },
   "scripts": {
+    "prestart": "bower install & npm install",
+    "start": "grunt serve"
     "test": "grunt test"
   }
 }
