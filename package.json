@@ -34,7 +34,7 @@
   },
   "scripts": {
     "prestart": "bower install & npm install",
-    "start": "grunt serve"
+    "start": "grunt serve",
     "test": "grunt test"
   }
 }
