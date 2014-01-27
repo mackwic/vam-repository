@@ -1,8 +1,8 @@
 <div class="header">
   <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#">About</a></li>
-    <li><a ng-href="#">Contact</a></li>
+    <li class="active"><a data-ng-href="#">Home</a></li>
+    <li><a data-ng-href="#">About</a></li>
+    <li><a data-ng-href="#">Contact</a></li>
   </ul>
   <h3 class="text-muted">vim pi</h3>
 </div>
@@ -21,13 +21,32 @@
 
   <div class="col-xs-12">&nbsp;</div>
 
-  <ul class="col-xs-12 col-xs-offset-1 row" data-ng-repeat="plugin in pluginCollection | filter:filter | limitTo:50">
-    <li class="col-xs-12">
-      <span class="label label-info">{{plugin.type}}</span>
-      <span data-ng-if="plugin.host" class="label label-success">{{plugin.host}}</span>
-      {{plugin.name}}
+  <ul
+    class="col-xs-12 col-xs-offset-1 row no-bullets"
+    data-ng-repeat="plugin in pluginCollection | filter:{name:filter, type:undefined} | limitTo:limit"
+  >
+    <li class="col-xs-12" data-bindonce="plugin">
+      <span
+        class="label label-info"
+        data-bo-text="plugin.type"></span>
+      <span
+        data-ng-if="plugin.host"
+        class="label label-success"
+        data-bo-text="plugin.host"></span>
+      <span data-bo-text="plugin.name"></span>
     </li>
   </ul>
+  <button type="button" class="btn btn-primary col-xs-10 col-xs-offset-1"
+    data-ng-click="scroll()"
+  >
+    <i class="glyphicon glyphicon-chevron-down"></i>
+  </button>
+</div>
+
+<div class="floating-footer col-sm-1 col-sm-offset-9">
+  <button class="btn btn-primary" onclick="window.scrollTo(0,100)">
+    Top <i class="glyphicon glyphicon-arrow-up"></i>
+  </button>
 </div>
 
 <div class="footer">

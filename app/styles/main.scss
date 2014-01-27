@@ -1,6 +1,10 @@
 $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
+@import "compass";
+@import "compass/css3";
+@import "compass/typography";
+@import "compass/utilities";
 
 .browsehappy {
     margin: 0.2em 0;
@@ -34,6 +38,21 @@ body {
     margin-bottom: 0;
     line-height: 40px;
     padding-bottom: 19px;
+}
+
+.floating-footer {
+  position: fixed;
+  bottom: 50px;
+  right: 200px;
+  @include opacity(0.4)
+}
+
+.no-bullets {
+  @include no-bullets
+}
+
+.floating-footer:hover {
+  @include opacity(1)
 }
 
 /* Custom page footer */

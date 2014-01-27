@@ -3,12 +3,10 @@
 angular.module('vimPiApp')
   .controller 'MainCtrl', (DBFetcher, $scope, $window) ->
 
-    $scope.pluginCollection = [{name: 'yeah'}]
+    $scope.limit = 50
 
-    #url = [
-    #  'https://bitbucket.org/vimcommunity/vim-pi/raw/master/db/script-id-to-name-log.json',
-    #  'https://bitbucket.org/vimcommunity/vim-pi/raw/master/db/scm_generated.json'
-    #]
+    $scope.scroll = ->
+      $scope.limit += 100
 
     DBFetcher.fetchAll().then (plugins) ->
       console.log arguments.length, plugins.length
