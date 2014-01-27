@@ -319,6 +319,18 @@ module.exports = function (grunt) {
       }
     },
 
+    'ftp-deploy': {
+      epimeros: {
+          auth: {
+          host: 'vam.epimeros.org',
+          port: 21,
+          authKey: 'epimeros'
+        },
+        src: '<%= yeoman.dist %>/',
+        dest: 'web/'
+      }
+    },
+
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
