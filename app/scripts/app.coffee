@@ -4,7 +4,8 @@ angular.module('vimPiApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'pasvaz.bindonce'
 ])
   .config ($routeProvider) ->
     $routeProvider
