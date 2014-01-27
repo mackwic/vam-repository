@@ -30,6 +30,19 @@ angular.module('vimPiApp')
           plugin[host.to[i - 1]] = matches[i]
       plugin
 
+    @flagVimScript = (name, infos) ->
+      angular.extend({
+        host: 'vim.org'
+        isVimScript: true
+        name: name
+        type: infos['script-type']
+      }, infos)
+
     @flagAll = (collection) => collection.map @flagPlugin
+    @flagAllVim = (collection) =>
+      res = []
+      for key, value of collection
+        res.push @flagVimScript key, value
+      res
 
     angular.extend this, sources

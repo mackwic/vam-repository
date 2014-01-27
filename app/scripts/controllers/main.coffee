@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('vimPiApp')
-  .controller 'MainCtrl', (Sources, $scope, $http, $q) ->
+  .controller 'MainCtrl', (DBFetcher, $scope, $window) ->
 
     $scope.pluginCollection = [{name: 'yeah'}]
 
@@ -10,22 +10,7 @@ angular.module('vimPiApp')
     #  'https://bitbucket.org/vimcommunity/vim-pi/raw/master/db/scm_generated.json'
     #]
 
-    url = [
-      'public/script-id-to-name-log.json',
-      'public/scm_generated.json'
-    ]
+    DBFetcher.fetchAll().then (plugins) ->
+      console.log arguments.length, plugins.length
+      $scope.pluginCollection = plugins
 
-    $q.all(
-      #url.map($http.get)
-      [$http.get(url[0]), $http.get(url[1])]
-
-    ).then(([names, sources]) ->
-      names = names.data
-      sources = sources.data
-      $scope.pluginCollection = for key, value of sources
-        {name: names[key][0], type: value.type, url: value.url}
-
-    ).then(Sources.flagAll).then((flaggedPlugins) ->
-      $scope.pluginCollection = flaggedPlugins
-      console.log flaggedPlugins
-    )
